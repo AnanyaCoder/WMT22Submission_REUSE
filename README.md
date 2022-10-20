@@ -1,7 +1,7 @@
 # WMT22Submission_REUSE
 ## README
 
-This contains the inputs for the metrics task at WMT 2022, both the main task ( from WMT general translation task) and the challenge sets subtask (created specifically to test MT metrics). Please score both. You can use the provided prepare_scores.py script to iterate over all files. 
+This contains the inputs for the metrics task at WMT 2022, both the main task ( from WMT general translation task) and the challenge sets subtask (created specifically to test MT metrics). 
 
 The files can be found in two formats:
 - a text format, where one line corresponds to one segment.  
