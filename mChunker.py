@@ -159,22 +159,23 @@ def getSentenceChunkWiseEmbedding(sentence,sent_Emb_Model):
     #encode the sentence chunks as a list of chunk-wise embeddings.
     return sent_Emb_Model.encode(list_of_chunks),list_of_chunks
 
-def evaluateSentencePair(src_sent,mt_sent,beta = 3):
+def evaluateSentencePair(src_sent,mt_sent):
+    beta = 3
     sentence1 = src_sent
     sentence2 = mt_sent
     try:
         sentencemeb1,list_of_chunks1 = getSentChunkWiseEmbedding(sentence1,sentemb_tokenizer,sentemb_Model)
     except:
         sentencemeb1,list_of_chunks1 = getSentenceChunkWiseEmbedding(sentence1,sentEmbeddingModel)
-        print(sentence1,list_of_chunks1)
+        #print(sentence1,list_of_chunks1)
     len_chunk_1 = len(list_of_chunks1)
     try:
         sentencemeb2,list_of_chunks2 = getSentChunkWiseEmbedding(sentence2,sentemb_tokenizer,sentemb_Model)
     except:
         sentencemeb2,list_of_chunks2 = getSentenceChunkWiseEmbedding(sentence2,sentEmbeddingModel)
     len_chunk_2 = len(list_of_chunks2)   
-    print("Sentence 1 chunks : ",list_of_chunks1, "\n No of Chunks : ", len(list_of_chunks1))
-    print("Sentence 2 chunks : ",list_of_chunks2, "\n No of Chunks : ", len(list_of_chunks2))
+    #print("Sentence 1 chunks : ",list_of_chunks1, "\n No of Chunks : ", len(list_of_chunks1))
+    #print("Sentence 2 chunks : ",list_of_chunks2, "\n No of Chunks : ", len(list_of_chunks2))
     
     
     #For every chunk in mt, matching chunks in src are retrieved.
@@ -210,13 +211,13 @@ def getChunkBasedScore(list1,list2):
     scores = []
     for i in range(len(list1)):
         try:
-            p,r,s = evaluateSentencePair(list1[i],list2[i],sentemb_tokenizer,sentemb_Model)
+            p,r,s = evaluateSentencePair(list1[i],list2[i])
         except:
             s = 0.1
             
         Lb_sen_score = getSentenceEmbedding(sentEmbeddingModel,[list1[i],list2[i]])
         
-        print(s, Lb_sen_score)
+        #print(s, Lb_sen_score)
         mean = (Lb_sen_score + s)/2
         scores.append(mean)
     return scores
