@@ -35,12 +35,12 @@ samples = {
 For QE-as-a-metric we provide a similar script to run COMET-QE baseline (first verify if you have unbabel-comet installed!):
 
 ```bash
-python prepare_scores.py --baseline COMET-QE
+python3 prepare_qe_scores_REUSE.py --baseline COMET-QE
 ```
 For REUSE,
 
 ```bash
-python prepare_scores.py --baseline REUSE
+python3 prepare_qe_scores_REUSE.py --baseline REUSE
 ```
 
-The output files will be stored in `scores/`.
+The output files will be stored in `scores/qe-as-a-metric`.
